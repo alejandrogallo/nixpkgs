@@ -25,6 +25,7 @@
   cmake,
   pango,
   pkg-config,
+  puredata,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -63,6 +64,7 @@ stdenv.mkDerivation (finalAttrs: {
     libxcb-keysyms
     libxcb-render-util
     zenity
+    puredata
   ];
 
   nativeBuildInputs = [
@@ -72,6 +74,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   cmakeFlags = [
     (lib.cmakeBool "SFIZZ_TESTS" true)
+    (lib.cmakeBool "PLUGIN_PUREDATA" true)
   ];
 
   doCheck = true;
